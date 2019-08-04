@@ -39,15 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken', # new!
     'rest_auth',
-    'django_expiring_token',
+    #'django_expiring_token',
     'api',
     'authentication',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'django_expiring_token.authentication.ExpiringTokenAuthentication',
+        'api.authlog.ExpiringTokenAuthentication', # custom authentication class
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated', )
@@ -135,5 +136,6 @@ STATIC_URL = '/static/'
 
 
 # Any timedelta setting can be used! If not set, the default value is 1 day
-EXPIRING_TOKEN_LIFESPAN = datetime.timedelta(seconds=30)
+#EXPIRING_TOKEN_LIFESPAN = datetime.timedelta(minutes=5)
 
+TOKEN_EXPIRED_AFTER_SECONDS = 60
