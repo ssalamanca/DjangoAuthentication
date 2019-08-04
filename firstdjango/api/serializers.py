@@ -2,11 +2,10 @@ from rest_framework import serializers
 from authentication import models
 
 
-class TodoSerializer(serializers.ModelSerializer):
+class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
-            'id',
-            'title',
-            'description',
+            'user',
+            'password',
         )
-        model = models.Todo
+        model = models.Usuario
